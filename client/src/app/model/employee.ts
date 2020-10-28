@@ -1,6 +1,6 @@
 export class Employee {
 
-    id:number;
+    id:string;
     firstName:string;
     lastName:string;
     emailId:string;
