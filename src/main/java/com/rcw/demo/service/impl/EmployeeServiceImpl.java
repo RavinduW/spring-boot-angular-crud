@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -99,5 +101,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         dto.setId(employee.getId().toString());
 
         return dto;
+    }
+
+    @Override
+    public Map<String, Boolean> deleteEmployee(String id) {
+
+        Employee employee = employeeRepository.findById(new Long(id)).orElseThrow(()->new ResourceNotFoundException("Employee not exist with id "+id));
+
+        employeeRepository.delete(employee);
+
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("Deleted",Boolean.TRUE);
+
+        return response;
     }
 }

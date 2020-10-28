@@ -3,6 +3,7 @@ package com.rcw.demo.service;
 import com.rcw.demo.dto.EmployeeDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeeService {
 
@@ -13,4 +14,6 @@ public interface EmployeeService {
     EmployeeDTO getEmployeeData(String id);
 
     EmployeeDTO updateEmployee(String id,EmployeeDTO dto);
+
+    Map<String,Boolean> deleteEmployee(String id);
 }

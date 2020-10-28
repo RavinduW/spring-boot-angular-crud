@@ -24,8 +24,16 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  updateEmployee(id:number){
+  updateEmployee(id:string){
     this.router.navigate(['update-employee',id]);
+  }
+
+  deleteEmployee(id:string){
+    this.employeeService.deleteEmployee(id).subscribe(data=>{
+        this.getEmployees();
+    },error=>{
+      console.log(error);
+    })
   }
 
 }
